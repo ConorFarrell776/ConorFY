@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "932875290463",
+    "firebase_url": "https://conorfarrell-finalyear-db-default-rtdb.firebaseio.com",
+    "project_id": "conorfarrell-finalyear-db",
+    "storage_bucket": "conorfarrell-finalyear-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932875290463:android:8bb80129224e11ebbed8ea",
+        "android_client_info": {
+          "package_name": "com.example.conorfarrell_finalyear"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932875290463-ntsrj7ud1v4rmgq4mgf3am8vp9dh1tlf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbDyFTCEiVhTCBZrQkE7ZMnwvvGXTcYpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932875290463-ntsrj7ud1v4rmgq4mgf3am8vp9dh1tlf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932875290463:android:f5f542416e602364bed8ea",
+        "android_client_info": {
+          "package_name": "com.example.finalyear"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932875290463-ntsrj7ud1v4rmgq4mgf3am8vp9dh1tlf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbDyFTCEiVhTCBZrQkE7ZMnwvvGXTcYpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932875290463-ntsrj7ud1v4rmgq4mgf3am8vp9dh1tlf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
