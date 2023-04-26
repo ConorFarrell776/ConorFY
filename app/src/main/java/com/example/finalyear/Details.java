@@ -46,4 +46,8 @@ public class Details {
         this.width = width;
         this.id=id;
     }
+
+    public String toString() {
+        return this.amount + " " + name + " " + width;
+    }
 }

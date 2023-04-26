@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Display">
+
+    <TextView
+        android:id="@+id/WallSize"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/W"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/WallSize"
+        android:text="W"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/H"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/W"
+        android:text="H"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Large"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/WallSize"
+        android:layout_marginBottom="20dp"
+        android:text="Large Frame"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med1"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/Large"
+        android:layout_marginBottom="10dp"
+        android:text="Medium Frame"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med2"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/Med1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Medium Frame"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med3"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/Med2"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Medium Frame"
+        android:textSize="20dp" />
+
+    <TextView
+
+        android:id="@+id/Small"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/Med3"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Small Frame"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/LRGW"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/W"
+        android:layout_toRightOf="@id/Large"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med1W"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/LRGW"
+        android:layout_toRightOf="@id/Med1"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med2W"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/Med1W"
+        android:layout_toRightOf="@id/Med2"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med3W"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/Med2W"
+        android:layout_toRightOf="@id/Med3"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/SmallW"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/Med3W"
+        android:layout_toRightOf="@id/Small"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/LRGH"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/LRGW"
+        android:layout_below="@id/W"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med1H"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/LRGW"
+        android:layout_below="@id/LRGH"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med2H"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/Med2W"
+        android:layout_below="@id/Med1H"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med3H"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/Med3W"
+        android:layout_below="@id/Med2H"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/SmallH"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/SmallW"
+        android:layout_below="@id/Med3H"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_below="@id/Small"
+        android:layout_marginTop="25dp"
+        android:insetLeft="75dp"
+        android:insetRight="75dp"
+        android:text="Calculate Price" />
+
+
+
+
+</RelativeLayout>
