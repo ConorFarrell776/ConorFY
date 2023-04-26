@@ -37,10 +37,10 @@ public class WallSize extends AppCompatActivity {
         smallw = findViewById(R.id.SmallW);
         pri = findViewById(R.id.price);
         wallsize = (TextView) findViewById(R.id.WallSize);
-        Intent intent = getIntent();
-        String str = intent.getStringExtra("message_key");
-        String siz = intent.getStringExtra("Size");
-        String value = intent.getStringExtra("value");
+        Intent i = getIntent();
+        String str = i.getStringExtra("message_key");
+        String siz = i.getStringExtra("Size");
+        String value = i.getStringExtra("value");
         wallsize.setText(str);
         int length = Integer.parseInt(value);
         int lrgW = length* 30;
@@ -85,7 +85,7 @@ public class WallSize extends AppCompatActivity {
             med2h.setText(m2h);
             smallh.setText(sh);
         }
-        else if(value.equals("Five")){
+        else if(siz.equals("Five")){
             largew.setText(lw);
             med1w.setText(m1w);
             med2w.setText(m2w);
@@ -96,12 +96,22 @@ public class WallSize extends AppCompatActivity {
             med2h.setText(m2h);
             med3h.setText(m3h);
             smallh.setText(sh);
+            String sid ="Five";
+
         }
 
         pri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WallSize.this, Price.class));
+                Intent intent = new Intent(getApplicationContext(), Price.class);
+                String Title= i.getStringExtra("message_key");
+                intent.putExtra("title", Title);
+                String value = i.getStringExtra("value");
+                intent.putExtra("value", value);
+                String size = i.getStringExtra("Size");
+                intent.putExtra("Size", size);
+                startActivity(intent);
+               // startActivity(new Intent(WallSize.this, Price.class));
             }        });
 
     }
