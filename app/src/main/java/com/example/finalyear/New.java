@@ -50,10 +50,10 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
                 Intent intent = new Intent(getApplicationContext(), WallSize.class);
                 intent.putExtra("message_key", Title);
                 String value=width.getText().toString();
-                Intent i = new Intent(getApplicationContext(), WallSize.class);
                 intent.putExtra("value", value);
+                String size = frameAmount.getSelectedItem().toString();
+                intent.putExtra("Size",size);
                 startActivity(intent);
-                //startActivity(new Intent(New.this , com.example.conorfarrell_finalyear.WallSize.class));
             }
 
         });
