@@ -30,7 +30,7 @@ import java.util.Map;
 public class Price extends AppCompatActivity {
     TextView wallsize,materials,labour,large,med1,med2,med3,small,
             largem,med1m,med2m,med3m,smallm,largel,med1l,med2l,med3l,smalll,total;
-    Button pay;
+    Button pay,home;
     String publicKey= "pk_test_51N163kKFo6L84JioH2YHzTJXlIlslqr2JDVaPia7dzyZoYgzva7pWQHaL4uaJPS4lVNRwQdZLwajCJcgB4Kj6zEw00vo1zw6ps";
     String secretKey="sk_test_51N163kKFo6L84JioRIGu17Im0AJwwRSCAYEADHOFkawIgSl014CSyZYZ6e5KGIJZhOBe8xRb7zjfoqBJexLPs6p900PgiCKLgF";
     String customerID;
@@ -63,81 +63,24 @@ public class Price extends AppCompatActivity {
         smalll = findViewById(R.id.SmallL);
         total = findViewById(R.id.Total);
         pay = findViewById(R.id.Pay);
-        Intent i = getIntent();
-        String str = i.getStringExtra("title");
-        String siz = i.getStringExtra("Size");
-        String value = i.getStringExtra("value");
-        wallsize.setText(str);
-        int size = Integer.parseInt(value);
-        int largev= size * 3;
-        int medv = size * 2;
-        int smallv = size;
+        home = findViewById(R.id.Home);
         PaymentConfiguration.init(this, publicKey);
         paymentSheet = new PaymentSheet(this, paymentSheetResult -> {
             onPaymentResult(paymentSheetResult);
         });
-        String lm=String.valueOf(largev);
-        String mm=String.valueOf(medv);
-        String sm=String.valueOf(smallv);
-        if(siz.equals("Three")){
-            largem.setText( lm);
-            med1m.setText(mm);
-            med2m.setText("0");
-            med3m.setText("0");
-            smallm.setText(sm);
-            largel.setText("5");
-            med1l.setText("5");
-            med2l.setText("0");
-            med3l.setText("0");
-            smalll.setText("5");
-            int mat = (largev + medv+ smallv) ;
-            int three = 15;
-            int totalv = mat + three;
-            String totalp=String.valueOf(totalv);
-            total.setText("Total is €" + totalp);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Price.this, MainActivity.class));
 
-        }
-        else if(siz.equals("Four")){
-            largem.setText( lm);
-            med1m.setText(mm);
-            med2m.setText(mm);
-            med3m.setText("0");
-            smallm.setText(sm);
-            largel.setText("5");
-            med1l.setText("5");
-            med2l.setText("5");
-            med3l.setText("0");
-            smalll.setText("5");
-            int mat = (largev + medv + medv+ smallv);
-            int four = 20;
-            int totalv = mat + four;
-            totalp=String.valueOf(totalv);
-            total.setText("Total is €" + totalp);
+            }
+        });
 
-        }
-        else if(siz.equals("Five")){
-            largem.setText( lm);
-            med1m.setText(mm);
-            med2m.setText(mm);
-            med3m.setText(mm);
-            smallm.setText(sm);
-            largel.setText("5");
-            med1l.setText("5");
-            med2l.setText("5");
-            med3l.setText("5");
-            smalll.setText("5");
-            int mat = (largev + medv + medv+ medv+ smallv);
-            int five = 25;
-            int totalv = mat + five;
-            String totalp=String.valueOf(totalv);
-            total.setText("Total is €" + totalp);
-
-        }
 
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 PaymentFlow();
             }
         });
@@ -251,12 +194,11 @@ public class Price extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     String zero = "00";
-                    String input = total.getText().toString();
-
+                    int yes = TotalValue();
 
                     Map<String, String > params = new HashMap<>();
                     params.put("customer",customerID);
-                    params.put("amount",input+zero);
+                    params.put("amount",yes+zero);
                     params.put("currency","eur");
                     params.put("automatic_payment_methods[enabled]","true");
                     return params;
@@ -272,6 +214,77 @@ public class Price extends AppCompatActivity {
                     customerID,EphericalKey
             )));
 
+        }
+
+        private int TotalValue(){
+            int totalv = 0;
+            Intent i = getIntent();
+            String str = i.getStringExtra("title");
+            String siz = i.getStringExtra("Size");
+            String value = i.getStringExtra("value");
+            wallsize.setText(str);
+            int size = Integer.parseInt(value);
+            int largev= size * 3;
+            int medv = size * 2;
+            int smallv = size;
+            String lm=String.valueOf(largev);
+            String mm=String.valueOf(medv);
+            String sm=String.valueOf(smallv);
+            if(siz.equals("Three")){
+                largem.setText( lm);
+                med1m.setText(mm);
+                med2m.setText("0");
+                med3m.setText("0");
+                smallm.setText(sm);
+                largel.setText("5");
+                med1l.setText("5");
+                med2l.setText("0");
+                med3l.setText("0");
+                smalll.setText("5");
+                int mat = (largev + medv+ smallv) ;
+                int three = 15;
+                totalv = mat + three;
+                String totalp=String.valueOf(totalv);
+                total.setText("Total is €" + totalp);
+
+            }
+            else if(siz.equals("Four")){
+                largem.setText( lm);
+                med1m.setText(mm);
+                med2m.setText(mm);
+                med3m.setText("0");
+                smallm.setText(sm);
+                largel.setText("5");
+                med1l.setText("5");
+                med2l.setText("5");
+                med3l.setText("0");
+                smalll.setText("5");
+                int mat = (largev + medv + medv+ smallv);
+                int four = 20;
+                totalv = mat + four;
+                totalp=String.valueOf(totalv);
+                total.setText("Total is €" + totalp);
+
+            }
+            else if(siz.equals("Five")){
+                largem.setText( lm);
+                med1m.setText(mm);
+                med2m.setText(mm);
+                med3m.setText(mm);
+                smallm.setText(sm);
+                largel.setText("5");
+                med1l.setText("5");
+                med2l.setText("5");
+                med3l.setText("5");
+                smalll.setText("5");
+                int mat = (largev + medv + medv+ medv+ smallv);
+                int five = 25;
+                totalv = mat + five;
+                String totalp=String.valueOf(totalv);
+                total.setText("Total is €" + totalp);
+
+            }
+            return totalv;
         }
     }
 

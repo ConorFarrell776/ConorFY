@@ -205,6 +205,17 @@
         android:insetRight="75dp"
         android:text="Pay" />
 
+    <Button
+        android:id="@+id/Home"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_below="@id/Pay"
+        android:layout_marginTop="25dp"
+        android:insetLeft="75dp"
+        android:insetRight="75dp"
+        android:text="Return to home page" />
+
+
 
 
 
