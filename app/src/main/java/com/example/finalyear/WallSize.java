@@ -39,7 +39,7 @@ public class WallSize extends AppCompatActivity {
         wallsize = (TextView) findViewById(R.id.WallSize);
         Intent intent = getIntent();
         String str = intent.getStringExtra("message_key");
-        Intent i = getIntent();
+        String siz = intent.getStringExtra("Size");
         String value = intent.getStringExtra("value");
         wallsize.setText(str);
         int length = Integer.parseInt(value);
@@ -63,16 +63,41 @@ public class WallSize extends AppCompatActivity {
         String m2h=String.valueOf(med2H);
         String m3h=String.valueOf(med3H);
         String sh=String.valueOf(smallH);
-        largew.setText(lw);
-        med1w.setText(m1w);
-        med2w.setText(m2w);
-        med3w.setText(m3w);
-        smallw.setText(sw);
-        largeh.setText(lh);
-        med1h.setText(m1h);
-        med2h.setText(m2h);
-        med3h.setText(m3h);
-        smallh.setText(sh);
+        if(siz.equals("Three")){
+            largew.setText(lw);
+            med1w.setText(m1w);
+            med2w.setText("0");
+            med3w.setText("0");
+            smallw.setText(sw);
+            largeh.setText(lh);
+            med1h.setText(m1h);
+            med2h.setText("0");
+            med3h.setText("0");
+            smallh.setText(sh);
+        }
+        else if(siz.equals("Four")){
+            largew.setText(lw);
+            med1w.setText(m1w);
+            med2w.setText(m2w);
+            smallw.setText(sw);
+            largeh.setText(lh);
+            med1h.setText(m1h);
+            med2h.setText(m2h);
+            smallh.setText(sh);
+        }
+        else if(value.equals("Five")){
+            largew.setText(lw);
+            med1w.setText(m1w);
+            med2w.setText(m2w);
+            med3w.setText(m3w);
+            smallw.setText(sw);
+            largeh.setText(lh);
+            med1h.setText(m1h);
+            med2h.setText(m2h);
+            med3h.setText(m3h);
+            smallh.setText(sh);
+        }
+
         pri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
