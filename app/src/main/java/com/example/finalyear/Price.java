@@ -1,5 +1,6 @@
 package com.example.finalyear;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,15 +8,41 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.stripe.android.PaymentConfiguration;
+import com.stripe.android.paymentsheet.PaymentSheet;
+import com.stripe.android.paymentsheet.PaymentSheetResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Price extends AppCompatActivity {
     TextView wallsize,materials,labour,large,med1,med2,med3,small,
             largem,med1m,med2m,med3m,smallm,largel,med1l,med2l,med3l,smalll,total;
     Button pay;
+    String publicKey= "pk_test_51N163kKFo6L84JioH2YHzTJXlIlslqr2JDVaPia7dzyZoYgzva7pWQHaL4uaJPS4lVNRwQdZLwajCJcgB4Kj6zEw00vo1zw6ps";
+    String secretKey="sk_test_51N163kKFo6L84JioRIGu17Im0AJwwRSCAYEADHOFkawIgSl014CSyZYZ6e5KGIJZhOBe8xRb7zjfoqBJexLPs6p900PgiCKLgF";
+    String customerID;
+    String EphericalKey;
+    String totalp;
+    String ClientSecret;
+    PaymentSheet paymentSheet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_price);
+
         wallsize = (TextView) findViewById(R.id.WallSize);
         materials = findViewById(R.id.Materials);
         labour = findViewById(R.id.Labour);
@@ -45,6 +72,10 @@ public class Price extends AppCompatActivity {
         int largev= size * 3;
         int medv = size * 2;
         int smallv = size;
+        PaymentConfiguration.init(this, publicKey);
+        paymentSheet = new PaymentSheet(this, paymentSheetResult -> {
+            onPaymentResult(paymentSheetResult);
+        });
         String lm=String.valueOf(largev);
         String mm=String.valueOf(medv);
         String sm=String.valueOf(smallv);
@@ -80,7 +111,7 @@ public class Price extends AppCompatActivity {
             int mat = (largev + medv + medv+ smallv);
             int four = 20;
             int totalv = mat + four;
-            String totalp=String.valueOf(totalv);
+            totalp=String.valueOf(totalv);
             total.setText("Total is €" + totalp);
 
         }
@@ -106,9 +137,141 @@ public class Price extends AppCompatActivity {
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Price.this, Pay.class));
+                
+                PaymentFlow();
             }
         });
 
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://api.stripe.com/v1/customers",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject object = new JSONObject(response);
+                            customerID=object.getString("id");
+                            getEphericalKey(customerID);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> header = new HashMap<>();
+                header.put("Authorization","Bearer " + secretKey);
+                return header;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(Price.this);
+        requestQueue.add(stringRequest);
+
+
+
     }
-}
+
+
+    private void onPaymentResult(PaymentSheetResult paymentSheetResult) {
+            if (paymentSheetResult instanceof PaymentSheetResult.Completed){
+                Toast.makeText(this,"Payment success", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        private void getEphericalKey(String customerID) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://api.stripe.com/v1/ephemeral_keys",
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject object = new JSONObject(response);
+                                EphericalKey=object.getString("id");
+                                getClientSecret(customerID,EphericalKey);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> header = new HashMap<>();
+                    header.put("Authorization","Bearer " + secretKey);
+                    header.put("Stripe-Version","2022-11-15" );
+                    return header;
+                }
+
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String > params = new HashMap<>();
+                    params.put("customer",customerID);
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(Price.this);
+            requestQueue.add(stringRequest);
+        }
+
+        private void getClientSecret(String customerID, String ephericalKey) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://api.stripe.com/v1/payment_intents",
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject object = new JSONObject(response);
+                                ClientSecret=object.getString("client_secret");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> header = new HashMap<>();
+                    header.put("Authorization","Bearer " + secretKey);
+                    return header;
+                }
+
+                @Nullable
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    String zero = "00";
+                    String input = total.getText().toString();
+
+
+                    Map<String, String > params = new HashMap<>();
+                    params.put("customer",customerID);
+                    params.put("amount",input+zero);
+                    params.put("currency","eur");
+                    params.put("automatic_payment_methods[enabled]","true");
+                    return params;
+                }
+            };
+
+            RequestQueue requestQueue = Volley.newRequestQueue(Price.this);
+            requestQueue.add(stringRequest);
+        }
+
+        private void PaymentFlow() {
+            paymentSheet.presentWithPaymentIntent(ClientSecret,new PaymentSheet.Configuration("Abc",new PaymentSheet.CustomerConfiguration(
+                    customerID,EphericalKey
+            )));
+
+        }
+    }
+
