@@ -2,9 +2,9 @@
     <string name="app_name">FinalYear</string>
     <string name="title_activity_new">New</string>
     <string-array name="numbers">
+        <item>Three </item>
         <item>Five </item>
         <item>Seven </item>
-        <item>Ten </item>
     </string-array>
 
 </resources>

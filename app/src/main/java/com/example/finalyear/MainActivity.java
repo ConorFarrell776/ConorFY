@@ -52,8 +52,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 details = snapshot.getValue(Details.class);
-                arraylist.add(details);
-                arrayAdapter.notifyDataSetChanged();
+                String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                if(details.getId().equals(currentuser)){
+                    arraylist.add(details);
+                    arrayAdapter.notifyDataSetChanged();
+                }
+
             }
 
             @Override
