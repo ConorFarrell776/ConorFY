@@ -210,15 +210,16 @@
         android:layout_below="@id/Med3H"
         android:textSize="20dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/price"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="63dp"
         android:layout_below="@id/Small"
         android:layout_marginTop="25dp"
-        android:insetLeft="75dp"
+        android:background="@color/black"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:insetRight="75dp"
         android:text="Calculate Price" />
 
 

@@ -39,14 +39,15 @@
         android:layout_marginBottom="20dp"
         />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_password"
         android:textColor="@color/white"
-        android:insetLeft="25dp"
-        android:insetRight="25dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/black"
         android:text="Login"
         android:layout_marginBottom="20dp"/>
 

@@ -6,25 +6,27 @@
     android:background="@color/grey"
     tools:context=".MainActivity">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnlogout"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
+        android:background="@color/black"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/btndesign"
-        android:insetLeft="25dp"
-        android:insetRight="25dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:text="Log Out" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btndesign"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:background="@color/black"
         android:layout_marginTop="150dp"
         android:text="New PhotoWall"
-        android:insetLeft="25dp"
-        android:insetRight="25dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:textColor="@color/white" />
 
     <ListView
