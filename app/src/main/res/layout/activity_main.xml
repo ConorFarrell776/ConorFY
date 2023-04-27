@@ -5,6 +5,16 @@
     android:layout_height="match_parent"
     android:background="@color/grey"
     tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome User, To create a new photo wall, press the new photo wall button,If you have previous designs they should show at the bottom where you can press them to see further details on them "
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="100dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnlogout"
@@ -23,8 +33,9 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:background="@color/black"
-        android:layout_marginTop="150dp"
-        android:text="New PhotoWall"
+        android:layout_marginTop="25dp"
+        android:text="New Photo Wall"
+        android:layout_below="@+id/welcome"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white" />
@@ -34,6 +45,7 @@
         android:layout_width="match_parent"
         android:textColor="@color/white"
         android:paddingLeft="10dp"
+        android:layout_marginTop="20dp"
         android:layout_height="match_parent"
         android:layout_below="@+id/btnlogout"
         />
