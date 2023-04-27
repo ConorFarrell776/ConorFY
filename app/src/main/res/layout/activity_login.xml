@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".Login">
 
     <TextView
@@ -12,13 +13,17 @@
         android:layout_height="wrap_content"
         android:text="Enter Login Credentials"
         android:textSize="20dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="20dp"/>
 
     <EditText
         android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
+        android:hint="Email"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:layout_below="@+id/text_login"
         android:layout_marginBottom="20dp"
         />
@@ -27,8 +32,10 @@
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password"
+        android:hint="Password"
         android:layout_below="@+id/login_email"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="20dp"
         />
 
@@ -37,12 +44,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_password"
+        android:textColor="@color/white"
+        android:insetLeft="25dp"
+        android:insetRight="25dp"
         android:text="Login"
         android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/text_register"
         android:layout_width="match_parent"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login"
         android:text="New User Register"

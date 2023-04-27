@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".Display">
 
     <TextView
@@ -12,6 +13,8 @@
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <TextView
@@ -23,6 +26,7 @@
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/WallSize"
         android:text="W"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <TextView
@@ -33,6 +37,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/W"
+        android:textColor="@color/white"
         android:text="H"
         android:textSize="20dp" />
 
@@ -41,7 +46,9 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_below="@+id/WallSize"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
         android:text="Large Frame"
         android:textSize="20dp" />
 
@@ -51,7 +58,9 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Large"
         android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
         android:text="Medium Frame"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <TextView
@@ -60,6 +69,8 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Med1"
         android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="10dp"
         android:text="Medium Frame"
         android:textSize="20dp" />
@@ -69,7 +80,9 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_below="@+id/Med2"
+        android:textColor="@color/white"
         android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="10dp"
         android:text="Medium Frame"
         android:textSize="20dp" />
@@ -81,6 +94,8 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Med3"
         android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="10dp"
         android:text="Small Frame"
         android:textSize="20dp" />
@@ -91,6 +106,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
         android:layout_below="@id/W"
         android:layout_toRightOf="@id/Large"
         android:textSize="20dp" />
@@ -100,6 +116,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="80dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/LRGW"
         android:layout_toRightOf="@id/Med1"
@@ -109,6 +126,7 @@
         android:id="@+id/Med2W"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/Med1W"
@@ -122,6 +140,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/Med2W"
+        android:textColor="@color/white"
         android:layout_toRightOf="@id/Med3"
         android:textSize="20dp" />
 
@@ -129,6 +148,7 @@
         android:id="@+id/SmallW"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/Med3W"
@@ -139,6 +159,7 @@
         android:id="@+id/LRGH"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/LRGW"
@@ -148,6 +169,7 @@
     <TextView
         android:id="@+id/Med1H"
         android:layout_width="40dp"
+        android:textColor="@color/white"
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
@@ -159,6 +181,7 @@
         android:id="@+id/Med2H"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/Med2W"
@@ -170,6 +193,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/Med3W"
         android:layout_below="@id/Med2H"
@@ -180,6 +204,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/SmallW"
         android:layout_below="@id/Med3H"
@@ -189,11 +214,23 @@
         android:id="@+id/price"
         android:layout_width="match_parent"
         android:layout_height="63dp"
+        android:textColor="@color/white"
         android:layout_below="@id/Small"
         android:layout_marginTop="25dp"
         android:insetLeft="75dp"
         android:insetRight="75dp"
-        android:text="Calculate Price" />
+        android:text="Purchase" />
+
+    <Button
+        android:id="@+id/Home"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/price"
+        android:layout_marginTop="25dp"
+        android:insetLeft="75dp"
+        android:insetRight="75dp"
+        android:text="Return Home" />
 
 
 

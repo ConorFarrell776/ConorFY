@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".Price">
 
     <TextView
@@ -11,6 +12,8 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="20dp"
         android:textSize="20dp" />
 
@@ -23,6 +26,7 @@
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/WallSize"
         android:text="Material"
+        android:textColor="@color/white"
         android:textSize="12dp" />
 
     <TextView
@@ -34,6 +38,7 @@
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/Materials"
         android:text="Labour"
+        android:textColor="@color/white"
         android:textSize="12dp" />
 
     <TextView
@@ -42,6 +47,8 @@
         android:layout_height="40dp"
         android:layout_below="@+id/WallSize"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:text="Large Frame"
         android:textSize="20dp" />
 
@@ -51,6 +58,8 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Large"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:text="Medium Frame"
         android:textSize="20dp" />
 
@@ -60,6 +69,8 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Med1"
         android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="10dp"
         android:text="Medium Frame"
         android:textSize="20dp" />
@@ -70,7 +81,9 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Med2"
         android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
         android:text="Medium Frame"
         android:textSize="20dp" />
 
@@ -81,7 +94,9 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Med3"
         android:layout_marginTop="10dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
         android:text="Small Frame"
         android:textSize="20dp" />
 
@@ -93,6 +108,7 @@
         android:layout_marginBottom="20dp"
         android:layout_below="@id/Materials"
         android:layout_toRightOf="@id/Large"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <TextView
@@ -102,6 +118,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/LRGM"
+        android:textColor="@color/white"
         android:layout_toRightOf="@id/Med1"
         android:textSize="20dp" />
 
@@ -112,6 +129,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/Med1M"
+        android:textColor="@color/white"
         android:layout_toRightOf="@id/Med2"
         android:textSize="20dp" />
 
@@ -121,6 +139,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
         android:layout_below="@id/Med2M"
         android:layout_toRightOf="@id/Med3"
         android:textSize="20dp" />
@@ -132,6 +151,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/Med3M"
+        android:textColor="@color/white"
         android:layout_toRightOf="@id/Small"
         android:textSize="20dp" />
 
@@ -141,6 +161,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
         android:layout_toRightOf="@id/LRGM"
         android:layout_below="@id/Labour"
         android:textSize="20dp" />
@@ -151,6 +172,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
         android:layout_toRightOf="@id/Med1M"
         android:layout_below="@id/LRGL"
         android:textSize="20dp" />
@@ -162,6 +184,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/Med2M"
+        android:textColor="@color/white"
         android:layout_below="@id/Med1L"
         android:textSize="20dp" />
 
@@ -172,6 +195,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/Med3M"
+        android:textColor="@color/white"
         android:layout_below="@id/Med2L"
         android:textSize="20dp" />
 
@@ -181,6 +205,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
         android:layout_toRightOf="@id/SmallM"
         android:layout_below="@id/Med3L"
         android:textSize="20dp" />
@@ -192,6 +217,7 @@
         android:layout_below="@id/Small"
         android:layout_marginLeft="120dp"
         android:layout_marginTop="12dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"
         android:textSize="20dp" />
 
@@ -200,6 +226,7 @@
         android:layout_width="match_parent"
         android:layout_height="63dp"
         android:layout_below="@id/Total"
+        android:textColor="@color/white"
         android:layout_marginTop="25dp"
         android:insetLeft="75dp"
         android:insetRight="75dp"
@@ -210,6 +237,7 @@
         android:layout_width="match_parent"
         android:layout_height="63dp"
         android:layout_below="@id/Pay"
+        android:textColor="@color/white"
         android:layout_marginTop="25dp"
         android:insetLeft="75dp"
         android:insetRight="75dp"

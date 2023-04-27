@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/grey"
     android:layout_height="match_parent"
     tools:context=".New">
 
@@ -10,6 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
+
         android:hint="Enter the name of the Project" />
 
 
@@ -18,21 +22,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:hint="Enter Width of Wall in meters "
         android:layout_below="@id/name" />
 
     <Spinner
         android:id="@+id/amount"
         android:layout_width="match_parent"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
         android:layout_below="@id/width"/>
 
     <Button
         android:id="@+id/add"
         android:layout_width="match_parent"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_below="@+id/amount"
         android:layout_marginTop="40dp"
+        android:insetLeft="25dp"
+        android:insetRight="25dp"
         android:text="Add" />
 
 </RelativeLayout>

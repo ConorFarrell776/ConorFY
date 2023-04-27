@@ -5,18 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class Display extends AppCompatActivity {
     TextView wallsize,w,h,large,med1,med2,med3,small,
             largeh,med1h,med2h,med3h,smallh,largew,med1w,med2w,med3w,smallw;
-    Button pri;
+    Button pri,home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
         w = findViewById(R.id.W);
         h = findViewById(R.id.H);
         large = findViewById(R.id.Large);
@@ -35,6 +38,7 @@ public class Display extends AppCompatActivity {
         smallh = findViewById(R.id.SmallH);
         smallw = findViewById(R.id.SmallW);
         pri = findViewById(R.id.price);
+        home = findViewById(R.id.Home);
         wallsize = (TextView) findViewById(R.id.WallSize);
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
@@ -74,7 +78,13 @@ public class Display extends AppCompatActivity {
         pri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(WallSize.this, Price.class));
+                startActivity(new Intent(Display.this, Price.class));
+            }        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Display.this, MainActivity.class));
             }        });
     }
 }

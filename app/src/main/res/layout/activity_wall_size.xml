@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".WallSize">
 
     <TextView
@@ -11,7 +12,9 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <TextView
@@ -23,6 +26,7 @@
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/WallSize"
         android:text="W"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <TextView
@@ -34,6 +38,7 @@
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/W"
         android:text="H"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <TextView
@@ -42,6 +47,8 @@
         android:layout_height="40dp"
         android:layout_below="@+id/WallSize"
         android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:text="Large Frame"
         android:textSize="20dp" />
 
@@ -51,6 +58,8 @@
         android:layout_height="40dp"
         android:layout_below="@+id/Large"
         android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:text="Medium Frame"
         android:textSize="20dp" />
 
@@ -62,6 +71,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:text="Medium Frame"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
         android:textSize="20dp" />
 
     <TextView
@@ -71,6 +82,8 @@
         android:layout_below="@+id/Med2"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
         android:text="Medium Frame"
         android:textSize="20dp" />
 
@@ -80,7 +93,9 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_below="@+id/Med3"
+        android:textColor="@color/white"
         android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
         android:layout_marginBottom="10dp"
         android:text="Small Frame"
         android:textSize="20dp" />
@@ -89,6 +104,7 @@
         android:id="@+id/LRGW"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/W"
@@ -99,6 +115,7 @@
         android:id="@+id/Med1W"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/LRGW"
@@ -109,6 +126,7 @@
         android:id="@+id/Med2W"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/Med1W"
@@ -119,6 +137,7 @@
         android:id="@+id/Med3W"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@id/Med2W"
@@ -128,6 +147,7 @@
     <TextView
         android:id="@+id/SmallW"
         android:layout_width="40dp"
+        android:textColor="@color/white"
         android:layout_height="40dp"
         android:layout_marginLeft="80dp"
         android:layout_marginBottom="20dp"
@@ -140,6 +160,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/LRGW"
         android:layout_below="@id/W"
@@ -150,6 +171,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/LRGW"
         android:layout_below="@id/LRGH"
@@ -159,6 +181,7 @@
         android:id="@+id/Med2H"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/Med2W"
@@ -169,6 +192,7 @@
         android:id="@+id/Med3H"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/Med3W"
@@ -179,6 +203,7 @@
         android:id="@+id/SmallH"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:textColor="@color/white"
         android:layout_marginLeft="50dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@id/SmallW"
@@ -192,6 +217,7 @@
         android:layout_below="@id/Small"
         android:layout_marginTop="25dp"
         android:insetLeft="75dp"
+        android:textColor="@color/white"
         android:insetRight="75dp"
         android:text="Calculate Price" />
 

@@ -3,36 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey"
     tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/text_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="20dp"
-        android:text="Home Page!"
-        android:textSize="20dp" />
 
     <Button
         android:id="@+id/btnlogout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/btndesign"
+        android:insetLeft="25dp"
+        android:insetRight="25dp"
         android:text="Log Out" />
 
     <Button
         android:id="@+id/btndesign"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
-        android:text="New PhotoWall" />
+        android:layout_marginTop="150dp"
+        android:text="New PhotoWall"
+        android:insetLeft="25dp"
+        android:insetRight="25dp"
+        android:textColor="@color/white" />
 
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btndesign"
+        android:layout_below="@+id/btnlogout"
         />
 
 
