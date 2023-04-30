@@ -23,9 +23,9 @@ public class Registration extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
+        setContentView(R.layout.activity_registration);
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.register_email);
         password = findViewById(R.id.register_password);

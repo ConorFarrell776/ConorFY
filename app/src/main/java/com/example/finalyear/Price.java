@@ -42,9 +42,9 @@ public class Price extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_price);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
+        setContentView(R.layout.activity_price);
         wallsize = (TextView) findViewById(R.id.WallSize);
         materials = findViewById(R.id.Materials);
         labour = findViewById(R.id.Labour);

@@ -17,9 +17,9 @@ public class Display extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
+        setContentView(R.layout.activity_display);
         w = findViewById(R.id.W);
         h = findViewById(R.id.H);
         large = findViewById(R.id.Large);

@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
+        setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
         logout = findViewById(R.id.btnlogout);
         design = findViewById(R.id.btndesign);

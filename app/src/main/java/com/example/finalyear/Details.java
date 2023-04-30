@@ -48,6 +48,6 @@ public class Details {
     }
 
     public String toString() {
-        return this.amount + " " + name + " " + width;
+        return this.amount + " frames, " + name + ", Width " + width + " Meter";
     }
 }

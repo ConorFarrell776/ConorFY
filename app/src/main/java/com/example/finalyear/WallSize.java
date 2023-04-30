@@ -18,9 +18,9 @@ public class WallSize extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wall_size);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
+        setContentView(R.layout.activity_wall_size);
         w = findViewById(R.id.W);
         h = findViewById(R.id.H);
         large = findViewById(R.id.Large);
@@ -46,27 +46,22 @@ public class WallSize extends AppCompatActivity {
         String value = i.getStringExtra("value");
         wallsize.setText(str);
         int length = Integer.parseInt(value);
-        int lrgW = length* 30;
-        int med1W = length * 20;
-        int med2W = length * 20;
-        int med3W = length * 20;
-        int smallW = length * 10;
-        int lrgH = length* 30 +45;
-        int med1H = length * 20 + 30;
-        int med2H = length * 20 + 30;
-        int med3H = length * 20 +30;
-        int smallH = length * 10 +15;
-        String lw=String.valueOf(lrgW);
-        String m1w=String.valueOf(med1W);
-        String m2w=String.valueOf(med2W);
-        String m3w=String.valueOf(med3W);
-        String sw=String.valueOf(smallW);
-        String lh=String.valueOf(lrgH);
-        String m1h=String.valueOf(med1H);
-        String m2h=String.valueOf(med2H);
-        String m3h=String.valueOf(med3H);
-        String sh=String.valueOf(smallH);
+        int lrgW,med1W,med2W,med3W,smallW,lrgH,med1H,med2H,med3H,smallH;
+        String lw,m1w,m2w,m3w,sw,lh,m1h,m2h,m3h,sh;
+
         if(siz.equals("Three")){
+            lrgW = length* 45;
+            med1W = length * 35;
+            smallW = length * 20;
+            lrgH = length* 45 +45;
+            med1H = length * 35 + 30;
+            smallH = length * 20 +15;
+            lw=String.valueOf(lrgW);
+            m1w=String.valueOf(med1W);
+            sw=String.valueOf(smallW);
+            lh=String.valueOf(lrgH);
+            m1h=String.valueOf(med1H);
+            sh=String.valueOf(smallH);
             largew.setText(lw);
             med1w.setText(m1w);
             med2w.setText("0");
@@ -79,16 +74,54 @@ public class WallSize extends AppCompatActivity {
             smallh.setText(sh);
         }
         else if(siz.equals("Four")){
+            lrgW = length* 40;
+            med1W = length * 25;
+            med2W = length * 25;
+            smallW = length * 10;
+            lrgH = length* 40 +45;
+            med1H = length * 25 + 30;
+            med2H = length * 25 + 30;
+            smallH = length * 10 +15;
+            lw=String.valueOf(lrgW);
+            m1w=String.valueOf(med1W);
+            m2w=String.valueOf(med2W);
+            sw=String.valueOf(smallW);
+            lh=String.valueOf(lrgH);
+            m1h=String.valueOf(med1H);
+            m2h=String.valueOf(med2H);
+            sh=String.valueOf(smallH);
             largew.setText(lw);
             med1w.setText(m1w);
             med2w.setText(m2w);
+            med3w.setText("0");
             smallw.setText(sw);
             largeh.setText(lh);
             med1h.setText(m1h);
             med2h.setText(m2h);
+            med3h.setText("0");
             smallh.setText(sh);
         }
         else if(siz.equals("Five")){
+            lrgW = length* 30;
+            med1W = length * 20;
+            med2W = length * 20;
+            med3W = length * 20;
+            smallW = length * 10;
+            lrgH = length* 30 +45;
+            med1H = length * 20 + 30;
+            med2H = length * 20 + 30;
+            med3H = length * 20 +30;
+            smallH = length * 10 +15;
+            lw=String.valueOf(lrgW);
+            m1w=String.valueOf(med1W);
+            m2w=String.valueOf(med2W);
+            m3w=String.valueOf(med3W);
+            sw=String.valueOf(smallW);
+            lh=String.valueOf(lrgH);
+            m1h=String.valueOf(med1H);
+            m2h=String.valueOf(med2H);
+            m3h=String.valueOf(med3H);
+            sh=String.valueOf(smallH);
             largew.setText(lw);
             med1w.setText(m1w);
             med2w.setText(m2w);
@@ -99,7 +132,6 @@ public class WallSize extends AppCompatActivity {
             med2h.setText(m2h);
             med3h.setText(m3h);
             smallh.setText(sh);
-            String sid ="Five";
 
         }
 
