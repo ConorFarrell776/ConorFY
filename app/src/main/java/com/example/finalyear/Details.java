@@ -1,9 +1,10 @@
 package com.example.finalyear;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Details {
+public class Details implements Serializable {
 
     String amount, name, width,status;
 

@@ -209,6 +209,28 @@
         android:layout_toRightOf="@id/SmallW"
         android:layout_below="@id/Med3H"
         android:textSize="20dp" />
+    <TextView
+        android:id="@+id/Status"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/Med3H"
+        android:textSize="20dp" />
+    <TextView
+        android:id="@+id/Tprice"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/Status"
+        android:textSize="20dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/price"
@@ -218,7 +240,7 @@
         android:layout_centerHorizontal="true"
         android:background="@color/black"
         android:textColor="@color/white"
-        android:layout_below="@id/Small"
+        android:layout_below="@id/Tprice"
         android:layout_marginTop="25dp"
 
         android:text="Purchase" />

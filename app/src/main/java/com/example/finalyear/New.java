@@ -76,7 +76,7 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
         String sname = name.getText().toString();
         String swidth = width.getText().toString();
         String detailsKey = mDatabase.child("users").child(mCurrentUser.getUid()).child("details").push().getKey();
-        Details newDetails = new Details(sname, amount, swidth, "Incomplete");
+        Details newDetails = new Details(amount, sname, swidth, "Incomplete");
         Map<String, Object> detailsValues = newDetails.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);

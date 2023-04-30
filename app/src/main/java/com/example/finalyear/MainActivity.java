@@ -90,11 +90,10 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               Intent intent = new Intent(MainActivity.this, Display.class);
-               intent.putExtra("name",details.getName());
-               intent.putExtra("amount",details.getAmount());
-               intent.putExtra("width",details.getWidth());
-               startActivity(intent);
+                Details clickedDetails = detailsList.get(position);
+                Intent displayIntent = new Intent(MainActivity.this, Display.class);
+                displayIntent.putExtra("details", (Serializable) clickedDetails);
+                startActivity(displayIntent);
 
 
             }

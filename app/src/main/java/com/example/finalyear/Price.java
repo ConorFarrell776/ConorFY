@@ -124,6 +124,7 @@ public class Price extends AppCompatActivity {
     private void onPaymentResult(PaymentSheetResult paymentSheetResult) {
             if (paymentSheetResult instanceof PaymentSheetResult.Completed){
                 Toast.makeText(this,"Payment success", Toast.LENGTH_SHORT).show();
+
             }
         }
 
@@ -246,7 +247,7 @@ public class Price extends AppCompatActivity {
                 int mat = (largev + medv+ smallv) ;
                 int three = 15;
                 totalv = mat + three;
-                String totalp=String.valueOf(totalv);
+                totalp=String.valueOf(totalv);
                 total.setText("Total is €" + totalp);
 
             }

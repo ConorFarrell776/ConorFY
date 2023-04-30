@@ -9,9 +9,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Display extends AppCompatActivity {
+import java.io.Serializable;
+
+public class Display extends AppCompatActivity implements Serializable {
     TextView wallsize,w,h,large,med1,med2,med3,small,
-            largeh,med1h,med2h,med3h,smallh,largew,med1w,med2w,med3w,smallw;
+            largeh,med1h,med2h,med3h,smallh,largew,med1w,med2w,med3w,smallw,status,price;
     Button pri,home;
 
     @Override
@@ -39,42 +41,122 @@ public class Display extends AppCompatActivity {
         smallw = findViewById(R.id.SmallW);
         pri = findViewById(R.id.price);
         home = findViewById(R.id.Home);
+        status = findViewById(R.id.Status);
+        price = findViewById(R.id.Tprice);
         wallsize = (TextView) findViewById(R.id.WallSize);
         Intent intent = getIntent();
-        String name = intent.getStringExtra("name");
-        String value = intent.getStringExtra("width");
-        wallsize.setText(name);
-        int length = Integer.parseInt(value);
-        int lrgW = length* 30;
-        int med1W = length * 20;
-        int med2W = length * 20;
-        int med3W = length * 20;
-        int smallW = length * 10;
-        int lrgH = length* 30 +45;
-        int med1H = length * 20 + 30;
-        int med2H = length * 20 + 30;
-        int med3H = length * 20 +30;
-        int smallH = length * 10 +15;
-        String lw=String.valueOf(lrgW);
-        String m1w=String.valueOf(med1W);
-        String m2w=String.valueOf(med2W);
-        String m3w=String.valueOf(med3W);
-        String sw=String.valueOf(smallW);
-        String lh=String.valueOf(lrgH);
-        String m1h=String.valueOf(med1H);
-        String m2h=String.valueOf(med2H);
-        String m3h=String.valueOf(med3H);
-        String sh=String.valueOf(smallH);
-        largew.setText(lw);
-        med1w.setText(m1w);
-        med2w.setText(m2w);
-        med3w.setText(m3w);
-        smallw.setText(sw);
-        largeh.setText(lh);
-        med1h.setText(m1h);
-        med2h.setText(m2h);
-        med3h.setText(m3h);
-        smallh.setText(sh);
+        Details clickedDetails = (Details) intent.getSerializableExtra("details");
+        wallsize.setText(clickedDetails.getName());
+        String size = clickedDetails.getAmount();
+        status.setText("Current Status: " + clickedDetails.getStatus());
+        int length = Integer.parseInt(clickedDetails.getWidth());
+        int lrgW,med1W,med2W,med3W,smallW,lrgH,med1H,med2H,med3H,smallH;
+        String lw,m1w,m2w,m3w,sw,lh,m1h,m2h,m3h,sh;
+        int largev= length * 3;
+        int medv = length * 2;
+        int smallv = length;
+        int totalv;
+        String totalp;
+        if(size.equals("Three")){
+            lrgW = length* 45;
+            med1W = length * 35;
+            smallW = length * 20;
+            lrgH = length* 45 +45;
+            med1H = length * 35 + 30;
+            smallH = length * 20 +15;
+            lw=String.valueOf(lrgW);
+            m1w=String.valueOf(med1W);
+            sw=String.valueOf(smallW);
+            lh=String.valueOf(lrgH);
+            m1h=String.valueOf(med1H);
+            sh=String.valueOf(smallH);
+            largew.setText(lw);
+            med1w.setText(m1w);
+            med2w.setText("0");
+            med3w.setText("0");
+            smallw.setText(sw);
+            largeh.setText(lh);
+            med1h.setText(m1h);
+            med2h.setText("0");
+            med3h.setText("0");
+            smallh.setText(sh);
+            int mat = (largev + medv+ smallv) ;
+            int three = 15;
+            totalv = mat + three;
+            totalp=String.valueOf(totalv);
+            price.setText("Total is €" + totalp);
+        }
+        else if(size.equals("Four")){
+            lrgW = length* 40;
+            med1W = length * 25;
+            med2W = length * 25;
+            smallW = length * 10;
+            lrgH = length* 40 +45;
+            med1H = length * 25 + 30;
+            med2H = length * 25 + 30;
+            smallH = length * 10 +15;
+            lw=String.valueOf(lrgW);
+            m1w=String.valueOf(med1W);
+            m2w=String.valueOf(med2W);
+            sw=String.valueOf(smallW);
+            lh=String.valueOf(lrgH);
+            m1h=String.valueOf(med1H);
+            m2h=String.valueOf(med2H);
+            sh=String.valueOf(smallH);
+            largew.setText(lw);
+            med1w.setText(m1w);
+            med2w.setText(m2w);
+            med3w.setText("0");
+            smallw.setText(sw);
+            largeh.setText(lh);
+            med1h.setText(m1h);
+            med2h.setText(m2h);
+            med3h.setText("0");
+            smallh.setText(sh);
+            int mat = (largev + medv + medv+ smallv);
+            int four = 20;
+            totalv = mat + four;
+            totalp=String.valueOf(totalv);
+            price.setText("Total is €" + totalp);
+        }
+        else if(size.equals("Five")){
+            lrgW = length* 30;
+            med1W = length * 20;
+            med2W = length * 20;
+            med3W = length * 20;
+            smallW = length * 10;
+            lrgH = length* 30 +45;
+            med1H = length * 20 + 30;
+            med2H = length * 20 + 30;
+            med3H = length * 20 +30;
+            smallH = length * 10 +15;
+            lw=String.valueOf(lrgW);
+            m1w=String.valueOf(med1W);
+            m2w=String.valueOf(med2W);
+            m3w=String.valueOf(med3W);
+            sw=String.valueOf(smallW);
+            lh=String.valueOf(lrgH);
+            m1h=String.valueOf(med1H);
+            m2h=String.valueOf(med2H);
+            m3h=String.valueOf(med3H);
+            sh=String.valueOf(smallH);
+            largew.setText(lw);
+            med1w.setText(m1w);
+            med2w.setText(m2w);
+            med3w.setText(m3w);
+            smallw.setText(sw);
+            largeh.setText(lh);
+            med1h.setText(m1h);
+            med2h.setText(m2h);
+            med3h.setText(m3h);
+            smallh.setText(sh);
+            int mat = (largev + medv + medv+ medv+ smallv);
+            int five = 25;
+            totalv = mat + five;
+            totalp=String.valueOf(totalv);
+            price.setText("Total is €" + totalp);
+
+        }
         pri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
