@@ -23,66 +23,58 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
     FirebaseAuth mAuth;;
     Button logout,design;
     ListView listView;
-    ArrayList<Details> arraylist = new ArrayList<>();
-    ArrayAdapter<Details> arrayAdapter;
-    FirebaseDatabase rootNode;
-    DatabaseReference photowallUserDB;
+    List<Details> detailsList;
+    FirebaseUser mCurrentUser;
+    DatabaseReference mDatabase;
     Details details = new Details();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
+        Intent intent = getIntent();
+        User user = (User) intent.getSerializableExtra("user");
         logout = findViewById(R.id.btnlogout);
         design = findViewById(R.id.btndesign);
-        photowallUserDB = FirebaseDatabase.getInstance().getReference().child("PhotoWall");
         listView = findViewById(R.id.list);
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,arraylist);
-        listView.setAdapter(arrayAdapter);
-        photowallUserDB.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                details = snapshot.getValue(Details.class);
-                String currentuser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                if(details.getId().equals(currentuser)){
-                    arraylist.add(details);
-                    arrayAdapter.notifyDataSetChanged();
-                }
+        detailsList = new ArrayList<>();
 
-            }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+        mDatabase.child("users").child(mCurrentUser.getUid()).child("details")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        detailsList.clear();
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Details details = snapshot.getValue(Details.class);
+                            detailsList.add(details);
+                        }
+                        DetailsAdapter adapter = new DetailsAdapter(MainActivity.this, detailsList);
+                        listView.setAdapter(adapter);
+                    }
 
-            }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         design.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,14 +90,11 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Details details = arrayAdapter.getItem(position);
-                Intent intent = new Intent(MainActivity.this, Display.class);
-                intent.putExtra("name",details.getName());
-                intent.putExtra("amount",details.getAmount());
-                intent.putExtra("width",details.getWidth());
-                startActivity(intent);
-
-               // startActivity(new Intent(MainActivity.this, Display.class));
+               Intent intent = new Intent(MainActivity.this, Display.class);
+               intent.putExtra("name",details.getName());
+               intent.putExtra("amount",details.getAmount());
+               intent.putExtra("width",details.getWidth());
+               startActivity(intent);
 
 
             }

@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -20,12 +18,20 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class New extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     String text;
     EditText  name, width;
     Button add;
-    FirebaseDatabase rootNode;
-    DatabaseReference photowallUserDB;
+    DatabaseReference mDatabase;
+    FirebaseUser mCurrentUser;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +47,17 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         frameAmount.setAdapter(adapter);
         frameAmount.setOnItemSelectedListener(this);
-        photowallUserDB = FirebaseDatabase.getInstance().getReference().child("PhotoWall");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+
 
 
         add.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                insertPhotoWall();
+                String amount = frameAmount.getSelectedItem().toString();
+                insertPhotoWall(amount);
                 String Title=name.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), WallSize.class);
                 intent.putExtra("message_key", Title);
@@ -63,14 +72,17 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
 
     }
 
-    private void insertPhotoWall() {
+    private void insertPhotoWall(String amount) {
         String sname = name.getText().toString();
         String swidth = width.getText().toString();
-        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        String useruid=user.getUid();
-        Details details = new Details(text,sname, swidth, useruid);
+        String detailsKey = mDatabase.child("users").child(mCurrentUser.getUid()).child("details").push().getKey();
+        Details newDetails = new Details(sname, amount, swidth, "Incomplete");
+        Map<String, Object> detailsValues = newDetails.toMap();
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);
+        mDatabase.updateChildren(childUpdates);
 
-        photowallUserDB.push().setValue(details);
+
 
     }
 

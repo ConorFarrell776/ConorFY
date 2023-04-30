@@ -1,8 +1,11 @@
 package com.example.finalyear;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Details {
 
-    String amount, name, width,id;
+    String amount, name, width,status;
 
     public Details () {
 
@@ -32,19 +35,28 @@ public class Details {
         this.width = width;
     }
 
-    public String getId() {
-        return id;
+    public String getStatus() {
+        return status;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Details (String amount, String name, String width,String id) {
+    public Details (String amount, String name, String width,String status) {
         this.amount = amount;
         this.name = name;
         this.width = width;
-        this.id=id;
+        this.status=status;
+    }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("amount", amount);
+        result.put("name", name);
+        result.put("width", width);
+        result.put("status", status);
+        return result;
     }
 
     public String toString() {

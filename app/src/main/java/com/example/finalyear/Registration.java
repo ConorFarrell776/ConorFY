@@ -14,12 +14,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Registration extends AppCompatActivity {
     EditText email, password;
     Button register;
     FirebaseAuth mAuth;
     TextView login;
+    DatabaseReference mDatabase;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,8 @@ public class Registration extends AppCompatActivity {
         password = findViewById(R.id.register_password);
         register  = findViewById(R.id.register);
         login = findViewById(R.id.text_login);
+
+
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +57,9 @@ public class Registration extends AppCompatActivity {
     }
     private void Register()
     {
-        String user = email.getText().toString().trim();
+        String emails = email.getText().toString().trim();
         String pass = password.getText().toString().trim();
-        if(user.isEmpty())
+        if(emails.isEmpty())
         {
             email.setError("Email can not be empty");
         }
@@ -61,11 +69,16 @@ public class Registration extends AppCompatActivity {
         }
         else
         {
-            mAuth.createUserWithEmailAndPassword(user, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.createUserWithEmailAndPassword(emails, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful())
                     {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        String uid = user.getUid();
+                        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+                        User newUser = new User(emails, uid, false);
+                        usersRef.child(uid).setValue(newUser);
                         Toast.makeText(Registration.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Registration.this, MainActivity.class));
                     }
