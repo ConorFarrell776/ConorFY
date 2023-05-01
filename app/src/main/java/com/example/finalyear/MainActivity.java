@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements Serializable {
     Details details = new Details();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDatabase = FirebaseDatabase.getInstance().getReference();

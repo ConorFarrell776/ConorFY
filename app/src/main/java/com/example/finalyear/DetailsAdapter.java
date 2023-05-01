@@ -5,8 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -31,10 +34,13 @@ public class DetailsAdapter extends ArrayAdapter<Details> implements ListAdapter
         TextView name = convertView.findViewById(R.id.title);
         TextView status = convertView.findViewById(R.id.status);
         TextView width = convertView.findViewById(R.id.width);
+        ImageView image = convertView.findViewById(R.id.image);
+
 
         name.setText(currentDetails.getName());
         status.setText("Current Status:" +currentDetails.getStatus());
         width.setText("Width:" + currentDetails.getWidth() + " Meters");
+        Picasso.get().load(currentDetails.getImage()).resize(200, 200).centerCrop().into(image);
 
 
         return convertView;
