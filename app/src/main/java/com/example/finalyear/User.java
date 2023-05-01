@@ -7,17 +7,16 @@ import java.util.List;
 public class User {
     private String email;
     private String id;
-    private boolean isAdmin;
+
 
 
     public User() {
 
     }
 
-    public User(String email,String id, boolean isAdmin) {
+    public User(String email,String id) {
         this.email = email;
         this.id=id;
-        this.isAdmin = isAdmin;
     }
 
 
@@ -37,13 +36,7 @@ public class User {
         this.id = id;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
 
 
 }
