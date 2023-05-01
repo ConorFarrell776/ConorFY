@@ -48,13 +48,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Pay"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".New"
             android:exported="false">
 
