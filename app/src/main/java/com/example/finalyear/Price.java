@@ -1,5 +1,6 @@
 package com.example.finalyear;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
 import com.stripe.android.paymentsheet.PaymentSheetResult;
@@ -25,8 +33,10 @@ import com.stripe.android.paymentsheet.PaymentSheetResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 public class Price extends AppCompatActivity {
     TextView wallsize,materials,labour,large,med1,med2,med3,small,
@@ -39,6 +49,9 @@ public class Price extends AppCompatActivity {
     String totalp;
     String ClientSecret;
     PaymentSheet paymentSheet;
+    FirebaseUser mCurrentUser;
+    DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +79,7 @@ public class Price extends AppCompatActivity {
         total = findViewById(R.id.Total);
         pay = findViewById(R.id.Pay);
         home = findViewById(R.id.Home);
+        TotalValue();
         PaymentConfiguration.init(this, publicKey);
         paymentSheet = new PaymentSheet(this, paymentSheetResult -> {
             onPaymentResult(paymentSheetResult);
@@ -82,7 +96,6 @@ public class Price extends AppCompatActivity {
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 PaymentFlow();
             }
         });
@@ -124,6 +137,33 @@ public class Price extends AppCompatActivity {
     private void onPaymentResult(PaymentSheetResult paymentSheetResult) {
             if (paymentSheetResult instanceof PaymentSheetResult.Completed){
                 Toast.makeText(this,"Payment success", Toast.LENGTH_SHORT).show();
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+                mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+                Intent i = getIntent();
+                String order = i.getStringExtra("orderID");
+                mDatabase.child("users").child(mCurrentUser.getUid()).child("details").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot detailsSnapshot : dataSnapshot.getChildren()) {
+                            Details details = detailsSnapshot.getValue(Details.class);
+
+
+                            if (details.getOrderID().equals(order)) {
+                                details.setStatus("Complete");
+                                detailsSnapshot.getRef().child("status").setValue("Complete");
+
+
+
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
 
             }
         }
@@ -197,11 +237,45 @@ public class Price extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     String zero = "00";
-                    int yes = TotalValue();
+                    Intent i = getIntent();
+                    String order = i.getStringExtra("orderID");
+                    final int[] yes = {0};
+                    mDatabase = FirebaseDatabase.getInstance().getReference();
+                    mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+                    final CountDownLatch latch = new CountDownLatch(1);
+                    mDatabase.child("users").child(mCurrentUser.getUid()).child("details").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot detailsSnapshot : dataSnapshot.getChildren()) {
+                                Details details = detailsSnapshot.getValue(Details.class);
 
+
+                                if (details.getOrderID().equals(order)) {
+                                    String str = details.getPrice();
+
+                                    yes[0] = Integer.parseInt(str);
+
+
+                                }
+                            }
+                            latch.countDown();
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
+
+                    try {
+                        latch.await(); // wait for the latch to count down
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    int okay = yes[0];
                     Map<String, String > params = new HashMap<>();
                     params.put("customer",customerID);
-                    params.put("amount",yes+zero);
+                    params.put("amount", okay +zero);
                     params.put("currency","eur");
                     params.put("automatic_payment_methods[enabled]","true");
                     return params;
@@ -219,75 +293,96 @@ public class Price extends AppCompatActivity {
 
         }
 
-        private int TotalValue(){
-            int totalv = 0;
+        private void TotalValue(){
             Intent i = getIntent();
-            String str = i.getStringExtra("title");
-            String siz = i.getStringExtra("Size");
-            String value = i.getStringExtra("value");
-            wallsize.setText(str);
-            int size = Integer.parseInt(value);
-            int largev= size * 3;
-            int medv = size * 2;
-            int smallv = size;
-            String lm=String.valueOf(largev);
-            String mm=String.valueOf(medv);
-            String sm=String.valueOf(smallv);
-            if(siz.equals("Three")){
-                largem.setText( lm);
-                med1m.setText(mm);
-                med2m.setText("0");
-                med3m.setText("0");
-                smallm.setText(sm);
-                largel.setText("5");
-                med1l.setText("5");
-                med2l.setText("0");
-                med3l.setText("0");
-                smalll.setText("5");
-                int mat = (largev + medv+ smallv) ;
-                int three = 15;
-                totalv = mat + three;
-                totalp=String.valueOf(totalv);
-                total.setText("Total is €" + totalp);
+            String order = i.getStringExtra("orderID");
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+            mDatabase.child("users").child(mCurrentUser.getUid()).child("details").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot detailsSnapshot : dataSnapshot.getChildren()) {
+                        Details details = detailsSnapshot.getValue(Details.class);
 
-            }
-            else if(siz.equals("Four")){
-                largem.setText( lm);
-                med1m.setText(mm);
-                med2m.setText(mm);
-                med3m.setText("0");
-                smallm.setText(sm);
-                largel.setText("5");
-                med1l.setText("5");
-                med2l.setText("5");
-                med3l.setText("0");
-                smalll.setText("5");
-                int mat = (largev + medv + medv+ smallv);
-                int four = 20;
-                totalv = mat + four;
-                totalp=String.valueOf(totalv);
-                total.setText("Total is €" + totalp);
+                        if (details.getOrderID().equals(order)) {
+                            String str = details.getName();
+                            String value = details.getWidth();
+                            String siz = details.getAmount();
+                            wallsize.setText(str);
+                            int size = Integer.parseInt(value);
+                            int largev= size * 3;
+                            int medv = size * 2;
+                            int smallv = size;
+                            String lm=String.valueOf(largev);
+                            String mm=String.valueOf(medv);
+                            String sm=String.valueOf(smallv);
+                            if(siz.equals("Three")){
+                                largem.setText( lm);
+                                med1m.setText(mm);
+                                med2m.setText("0");
+                                med3m.setText("0");
+                                smallm.setText(sm);
+                                largel.setText("5");
+                                med1l.setText("5");
+                                med2l.setText("0");
+                                med3l.setText("0");
+                                smalll.setText("5");
+                                int totalv =0;
+                                int mat = (largev + medv+ smallv) ;
+                                int three = 15;
+                                totalv = mat + three;
+                                totalp=String.valueOf(totalv);
+                                total.setText("Total is €" + totalp);
 
-            }
-            else if(siz.equals("Five")){
-                largem.setText( lm);
-                med1m.setText(mm);
-                med2m.setText(mm);
-                med3m.setText(mm);
-                smallm.setText(sm);
-                largel.setText("5");
-                med1l.setText("5");
-                med2l.setText("5");
-                med3l.setText("5");
-                smalll.setText("5");
-                int mat = (largev + medv + medv+ medv+ smallv);
-                int five = 25;
-                totalv = mat + five;
-                String totalp=String.valueOf(totalv);
-                total.setText("Total is €" + totalp);
+                            }
+                            else if(siz.equals("Four")){
+                                largem.setText( lm);
+                                med1m.setText(mm);
+                                med2m.setText(mm);
+                                med3m.setText("0");
+                                smallm.setText(sm);
+                                largel.setText("5");
+                                med1l.setText("5");
+                                med2l.setText("5");
+                                med3l.setText("0");
+                                smalll.setText("5");
+                                int mat = (largev + medv + medv+ smallv);
+                                int four = 20;
+                                int totalv =0;
+                                totalv = mat + four;
+                                totalp=String.valueOf(totalv);
+                                total.setText("Total is €" + totalp);
 
-            }
-            return totalv;
+                            }
+                            else if(siz.equals("Five")){
+                                largem.setText( lm);
+                                med1m.setText(mm);
+                                med2m.setText(mm);
+                                med3m.setText(mm);
+                                smallm.setText(sm);
+                                largel.setText("5");
+                                med1l.setText("5");
+                                med2l.setText("5");
+                                med3l.setText("5");
+                                smalll.setText("5");
+                                int mat = (largev + medv + medv+ medv+ smallv);
+                                int five = 25;
+                                int totalv =0;
+                                totalv = mat + five;
+                                String totalp=String.valueOf(totalv);
+                                total.setText("Total is €" + totalp);
+                            }
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
         }
+
+
     }
 

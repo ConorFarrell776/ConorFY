@@ -18,8 +18,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class New extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     String text;
@@ -27,7 +29,7 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
     Button add;
     DatabaseReference mDatabase;
     FirebaseUser mCurrentUser;
-
+    String randomString;
 
 
 
@@ -58,13 +60,8 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
             public void onClick(View view) {
                 String amount = frameAmount.getSelectedItem().toString();
                 insertPhotoWall(amount);
-                String Title=name.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), WallSize.class);
-                intent.putExtra("message_key", Title);
-                String value=width.getText().toString();
-                intent.putExtra("value", value);
-                String size = frameAmount.getSelectedItem().toString();
-                intent.putExtra("Size",size);
+                intent.putExtra("orderID", randomString);
                 startActivity(intent);
             }
 
@@ -76,11 +73,63 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
         String sname = name.getText().toString();
         String swidth = width.getText().toString();
         String detailsKey = mDatabase.child("users").child(mCurrentUser.getUid()).child("details").push().getKey();
-        Details newDetails = new Details(amount, sname, swidth, "Incomplete");
-        Map<String, Object> detailsValues = newDetails.toMap();
-        Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);
-        mDatabase.updateChildren(childUpdates);
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        int length = 7;
+        for(int i = 0; i < length; i++) {
+            int index = random.nextInt(alphabet.length());
+            char randomChar = alphabet.charAt(index);
+            sb.append(randomChar);
+        }
+
+        int size = Integer.parseInt(swidth);
+        int largev= size * 3;
+        int medv = size * 2;
+        int smallv = size;
+        if(amount.equals("Three")){
+            int mat = (largev + medv+ smallv) ;
+            int three = 15;
+            int price = mat + three;
+            String yes =String.valueOf(price);
+            randomString = sb.toString();
+            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes);
+            Map<String, Object> detailsValues = newDetails.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);
+            mDatabase.updateChildren(childUpdates);
+
+
+        }
+        else if(amount.equals("Four")){
+            int mat = (largev + medv + medv+ smallv);
+            int four = 20;
+            int price = mat + four;
+            String yes =String.valueOf(price);
+            randomString = sb.toString();
+            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes);
+            Map<String, Object> detailsValues = newDetails.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);
+            mDatabase.updateChildren(childUpdates);
+
+
+        }
+        else if(amount.equals("Five")){
+            int mat = (largev + medv + medv+ medv+ smallv);
+            int five = 25;
+            int price = mat + five;
+            String yes =String.valueOf(price);
+            randomString = sb.toString();
+            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes);
+            Map<String, Object> detailsValues = newDetails.toMap();
+            Map<String, Object> childUpdates = new HashMap<>();
+            childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);
+            mDatabase.updateChildren(childUpdates);
+
+        }
+
+
 
 
 
