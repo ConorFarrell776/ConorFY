@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import java.nio.charset.Charset;
 import java.util.HashMap;
@@ -30,6 +32,7 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
     DatabaseReference mDatabase;
     FirebaseUser mCurrentUser;
     String randomString;
+    ImageView imageView;
 
 
 
@@ -44,6 +47,7 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
         name = findViewById(R.id.name);
         width = findViewById(R.id.width);
         add = findViewById(R.id.add);
+        imageView = findViewById(R.id.image);
         Spinner frameAmount = findViewById(R.id.amount);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.numbers, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -51,7 +55,6 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
         frameAmount.setOnItemSelectedListener(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-
 
 
         add.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +145,22 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         text = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
+        String dis = parent.getItemAtPosition(position).toString();
+        if(dis.equals("Three")){
+            String imageUrl = "https://media.istockphoto.com/id/184860264/photo/photo-or-picture-frames.jpg?s=612x612&w=is&k=20&c=kTXuCrbF8X6xE6kGBDnFEHjrk25hRPJH5N1X-Rji4OA=";
+            Picasso.get().load(imageUrl).into(imageView);
+
+        }
+        else if(dis.equals("Four")){
+            String images = "https://media.istockphoto.com/id/1179854058/photo/four-empty-photo-frame-for-mockup-on-wall-3d-rendering.jpg?s=612x612&w=is&k=20&c=IItatR24rgT9abcl4L2ES-Zon3y3NTzaXBNxgWmYLsA=";
+            Picasso.get().load(images).into(imageView);
+
+        }
+        else if(dis.equals("Five")){
+            String imagee = "https://media.istockphoto.com/id/1313010095/photo/picture-frames-on-grey-wall-mockup.jpg?s=612x612&w=is&k=20&c=TEouI7Hgo89DWq51xToMtuLHFfeF_nFx9PpXvgkgYpg=";
+            Picasso.get().load(imagee).into(imageView);
+        }
+
     }
 
     @Override
