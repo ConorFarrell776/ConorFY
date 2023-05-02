@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 public class adminMenu extends AppCompatActivity {
     EditText id,email;
-    Button srch,hme;
+    Button srch,hme,ema;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class adminMenu extends AppCompatActivity {
         id = findViewById(R.id.Name);
         srch = findViewById(R.id.Search);
         hme = findViewById(R.id.Home);
+        ema = findViewById(R.id.Emails);
 
         srch.setOnClickListener(new View.OnClickListener() {
 
@@ -43,6 +44,16 @@ public class adminMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(adminMenu.this, MainActivity.class));
+
+            }
+
+        });
+
+        ema.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(adminMenu.this, Email.class));
 
             }
 

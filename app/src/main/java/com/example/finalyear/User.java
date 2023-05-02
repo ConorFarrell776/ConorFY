@@ -8,15 +8,17 @@ public class User {
     private String email;
     private String id;
     String admin;
+    String eircode;
 
     public User() {
 
     }
 
-    public User(String email,String id,String admin) {
+    public User(String email,String id,String admin,String eircode) {
         this.email = email;
         this.id=id;
         this.admin=admin;
+        this.eircode=eircode;
     }
 
 
@@ -42,6 +44,14 @@ public class User {
 
     public void setAdmin(String admin) {
         this.admin = admin;
+    }
+
+    public String getEircode() {
+        return eircode;
+    }
+
+    public void setEircode(String eircode) {
+        this.eircode = eircode;
     }
 
 

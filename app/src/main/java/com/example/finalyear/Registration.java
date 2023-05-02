@@ -19,7 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Registration extends AppCompatActivity {
-    EditText email, password;
+    EditText email, password,eir;
     Button register;
     FirebaseAuth mAuth;
     TextView login;
@@ -37,6 +37,7 @@ public class Registration extends AppCompatActivity {
         password = findViewById(R.id.register_password);
         register  = findViewById(R.id.register);
         login = findViewById(R.id.text_login);
+        eir = findViewById(R.id.register_eircode);
 
 
 
@@ -59,6 +60,7 @@ public class Registration extends AppCompatActivity {
     {
         String emails = email.getText().toString().trim();
         String pass = password.getText().toString().trim();
+        String eirc = eir.getText().toString().trim();
         if(emails.isEmpty())
         {
             email.setError("Email can not be empty");
@@ -66,6 +68,10 @@ public class Registration extends AppCompatActivity {
         if(pass.isEmpty())
         {
             password.setError("Password can not be empty");
+        }
+        if(eirc.isEmpty())
+        {
+            eir.setError("Eircode can not be empty");
         }
         else
         {
@@ -77,7 +83,7 @@ public class Registration extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         String uid = user.getUid();
                         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
-                        User newUser = new User(emails, uid,"true");
+                        User newUser = new User(emails, uid,"true",eirc);
                         usersRef.child(uid).setValue(newUser);
                         Toast.makeText(Registration.this, "User registered successfully", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(Registration.this, MainActivity.class));
