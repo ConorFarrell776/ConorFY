@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Details implements Serializable {
 
-    String amount, name, width,status,orderID,price,image;
+    String amount, name, width,status,orderID,price,image,delivery;
 
     public Details () {
 
@@ -68,7 +68,15 @@ public class Details implements Serializable {
         this.image = image;
     }
 
-    public Details (String amount, String name, String width,String status,String orderID,String Price,String image) {
+    public String getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(String delivery) {
+        this.delivery = delivery;
+    }
+
+    public Details (String amount, String name, String width,String status,String orderID,String Price,String image,String delivery) {
         this.amount = amount;
         this.name = name;
         this.width = width;
@@ -76,6 +84,7 @@ public class Details implements Serializable {
         this.orderID = orderID;
         this.price = Price;
         this.image = image;
+        this.delivery = delivery;
     }
 
     public Map<String, Object> toMap() {
@@ -87,6 +96,7 @@ public class Details implements Serializable {
         result.put("orderID", orderID);
         result.put("price",price);
         result.put("image",image);
+        result.put("delivery",delivery);
         return result;
     }
 

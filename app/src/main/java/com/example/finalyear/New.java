@@ -96,7 +96,7 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
             int price = mat + three;
             String yes =String.valueOf(price);
             randomString = sb.toString();
-            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes,"https://media.istockphoto.com/id/184860264/photo/photo-or-picture-frames.jpg?s=612x612&w=is&k=20&c=kTXuCrbF8X6xE6kGBDnFEHjrk25hRPJH5N1X-Rji4OA=");
+            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes,"https://media.istockphoto.com/id/184860264/photo/photo-or-picture-frames.jpg?s=612x612&w=is&k=20&c=kTXuCrbF8X6xE6kGBDnFEHjrk25hRPJH5N1X-Rji4OA=","Not sent");
             Map<String, Object> detailsValues = newDetails.toMap();
             Map<String, Object> childUpdates = new HashMap<>();
             childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);
@@ -110,7 +110,7 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
             int price = mat + four;
             String yes =String.valueOf(price);
             randomString = sb.toString();
-            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes,"https://media.istockphoto.com/id/1179854058/photo/four-empty-photo-frame-for-mockup-on-wall-3d-rendering.jpg?s=612x612&w=is&k=20&c=IItatR24rgT9abcl4L2ES-Zon3y3NTzaXBNxgWmYLsA=");
+            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes,"https://media.istockphoto.com/id/1179854058/photo/four-empty-photo-frame-for-mockup-on-wall-3d-rendering.jpg?s=612x612&w=is&k=20&c=IItatR24rgT9abcl4L2ES-Zon3y3NTzaXBNxgWmYLsA=","Not sent");
             Map<String, Object> detailsValues = newDetails.toMap();
             Map<String, Object> childUpdates = new HashMap<>();
             childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);
@@ -124,7 +124,7 @@ public class New extends AppCompatActivity implements AdapterView.OnItemSelected
             int price = mat + five;
             String yes =String.valueOf(price);
             randomString = sb.toString();
-            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes,"https://media.istockphoto.com/id/1313010095/photo/picture-frames-on-grey-wall-mockup.jpg?s=612x612&w=is&k=20&c=TEouI7Hgo89DWq51xToMtuLHFfeF_nFx9PpXvgkgYpg=");
+            Details newDetails = new Details(amount, sname, swidth, "Incomplete",randomString,yes,"https://media.istockphoto.com/id/1313010095/photo/picture-frames-on-grey-wall-mockup.jpg?s=612x612&w=is&k=20&c=TEouI7Hgo89DWq51xToMtuLHFfeF_nFx9PpXvgkgYpg=","Not sent");
             Map<String, Object> detailsValues = newDetails.toMap();
             Map<String, Object> childUpdates = new HashMap<>();
             childUpdates.put("/users/" + mCurrentUser.getUid() + "/details/" + detailsKey, detailsValues);

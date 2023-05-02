@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context=".AdminDisplay">
+
+    <TextView
+        android:id="@+id/WallSize"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/W"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/WallSize"
+        android:text="W"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/H"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/W"
+        android:text="H"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Large"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/WallSize"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
+        android:text="Large Frame"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med1"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/Large"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
+        android:text="Medium Frame"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med2"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/Med1"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Medium Frame"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med3"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/Med2"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
+        android:text="Medium Frame"
+        android:textSize="20dp" />
+
+    <TextView
+
+        android:id="@+id/Small"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/Med3"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Small Frame"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/LRGW"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/W"
+        android:layout_toRightOf="@id/Large"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med1W"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/LRGW"
+        android:layout_toRightOf="@id/Med1"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med2W"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/Med1W"
+        android:layout_toRightOf="@id/Med2"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med3W"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/Med2W"
+        android:layout_toRightOf="@id/Med3"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/SmallW"
+        android:layout_width="40dp"
+        android:textColor="@color/white"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/Med3W"
+        android:layout_toRightOf="@id/Small"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/LRGH"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/LRGW"
+        android:layout_below="@id/W"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med1H"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/LRGW"
+        android:layout_below="@id/LRGH"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med2H"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/Med2W"
+        android:layout_below="@id/Med1H"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Med3H"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/Med3W"
+        android:layout_below="@id/Med2H"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/SmallH"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@id/SmallW"
+        android:layout_below="@id/Med3H"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Status"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/Med3H"
+        android:textSize="20dp" />
+    <TextView
+        android:id="@+id/Tprice"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/Status"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/Delivery"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/Tprice"
+        android:textSize="20dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/adminMenu"
+        android:layout_width="250dp"
+        android:layout_height="63dp"
+        android:layout_below="@id/Delivery"
+        android:layout_marginTop="15dp"
+        android:background="@color/black"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:text="Return to admin page" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Home"
+        android:layout_width="250dp"
+        android:layout_height="63dp"
+        android:layout_below="@id/adminMenu"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:text="Return to home page" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Sent"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/adminMenu"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="-237dp"
+        android:layout_toRightOf="@id/Status"
+        android:background="@color/black"
+        android:text="Set Delivery to Sent"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Delivered"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/Sent"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/Tprice"
+        android:background="@color/black"
+        android:text="Set Delivery to Delivered"
+        android:textColor="@color/white" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/NotSent"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/Delivered"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/Delivery"
+        android:background="@color/black"
+        android:text="Set Delivery to not sent"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>

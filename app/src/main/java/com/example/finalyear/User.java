@@ -7,16 +7,16 @@ import java.util.List;
 public class User {
     private String email;
     private String id;
-
-
+    String admin;
 
     public User() {
 
     }
 
-    public User(String email,String id) {
+    public User(String email,String id,String admin) {
         this.email = email;
         this.id=id;
+        this.admin=admin;
     }
 
 
@@ -36,7 +36,13 @@ public class User {
         this.id = id;
     }
 
+    public String getAdmin() {
+        return admin;
+    }
 
+    public void setAdmin(String admin) {
+        this.admin = admin;
+    }
 
 
 }

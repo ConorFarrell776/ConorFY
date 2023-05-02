@@ -31,7 +31,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Serializable {
     FirebaseAuth mAuth;;
-    Button logout,design;
+    Button logout,design,admin;
     ListView listView;
     List<Details> detailsList;
     FirebaseUser mCurrentUser;
@@ -54,7 +54,27 @@ public class MainActivity extends AppCompatActivity implements Serializable {
         logout = findViewById(R.id.btnlogout);
         design = findViewById(R.id.btndesign);
         listView = findViewById(R.id.list);
+        admin =findViewById(R.id.Admin);
         detailsList = new ArrayList<>();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("users").child(currentUser.getUid());
+        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                if (user != null && user.getAdmin().equals("true")) {
+                    admin.setVisibility(View.VISIBLE);
+                } else {
+                    admin.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
 
         mDatabase.child("users").child(mCurrentUser.getUid()).child("details")
@@ -80,6 +100,12 @@ public class MainActivity extends AppCompatActivity implements Serializable {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, New.class));
+            }
+        });
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, adminMenu.class));
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {
