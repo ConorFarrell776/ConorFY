@@ -174,9 +174,9 @@ public class WallSize extends AppCompatActivity {
         pri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Price.class);
-                intent.putExtra("orderID", order);
-                startActivity(intent);
+                Intent yes = new Intent(getApplicationContext(), Price.class);
+                yes.putExtra("orderID", order);
+                startActivity(yes);
             }        });
 
     }

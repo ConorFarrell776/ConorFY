@@ -48,7 +48,12 @@ public class Display extends AppCompatActivity implements Serializable {
         Details clickedDetails = (Details) intent.getSerializableExtra("details");
         wallsize.setText(clickedDetails.getName());
         String size = clickedDetails.getAmount();
+        String ord =clickedDetails.getOrderID();
+        String yes = clickedDetails.getStatus();
         status.setText("Current Status: " + clickedDetails.getStatus());
+        if(yes.equals("Incomplete")){
+            pri.setVisibility(View.VISIBLE);
+        }
         int length = Integer.parseInt(clickedDetails.getWidth());
         int lrgW,med1W,med2W,med3W,smallW,lrgH,med1H,med2H,med3H,smallH;
         String lw,m1w,m2w,m3w,sw,lh,m1h,m2h,m3h,sh;
@@ -160,8 +165,9 @@ public class Display extends AppCompatActivity implements Serializable {
         pri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Display.this, Price.class));
-            }        });
+                Intent intent = new Intent(getApplicationContext(), Price.class);
+                intent.putExtra("ord", ord);
+                startActivity(intent);            }        });
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override

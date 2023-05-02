@@ -141,6 +141,8 @@ public class Price extends AppCompatActivity {
                 mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
                 Intent i = getIntent();
                 String order = i.getStringExtra("orderID");
+                Intent d = getIntent();
+                String ord = d.getStringExtra("ord");
                 mDatabase.child("users").child(mCurrentUser.getUid()).child("details").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -148,7 +150,7 @@ public class Price extends AppCompatActivity {
                             Details details = detailsSnapshot.getValue(Details.class);
 
 
-                            if (details.getOrderID().equals(order)) {
+                            if (details.getOrderID().equals(order) || details.getOrderID().equals(ord)) {
                                 details.setStatus("Complete");
                                 detailsSnapshot.getRef().child("status").setValue("Complete");
 
@@ -239,6 +241,8 @@ public class Price extends AppCompatActivity {
                     String zero = "00";
                     Intent i = getIntent();
                     String order = i.getStringExtra("orderID");
+                    Intent d = getIntent();
+                    String ord = d.getStringExtra("ord");
                     final int[] yes = {0};
                     mDatabase = FirebaseDatabase.getInstance().getReference();
                     mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -250,7 +254,7 @@ public class Price extends AppCompatActivity {
                                 Details details = detailsSnapshot.getValue(Details.class);
 
 
-                                if (details.getOrderID().equals(order)) {
+                                if (details.getOrderID().equals(order)|| details.getOrderID().equals(ord)) {
                                     String str = details.getPrice();
 
                                     yes[0] = Integer.parseInt(str);
@@ -296,6 +300,8 @@ public class Price extends AppCompatActivity {
         private void TotalValue(){
             Intent i = getIntent();
             String order = i.getStringExtra("orderID");
+            Intent yes = getIntent();
+            String ord = yes.getStringExtra("ord");
             mDatabase = FirebaseDatabase.getInstance().getReference();
             mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
             mDatabase.child("users").child(mCurrentUser.getUid()).child("details").addValueEventListener(new ValueEventListener() {
@@ -304,7 +310,7 @@ public class Price extends AppCompatActivity {
                     for (DataSnapshot detailsSnapshot : dataSnapshot.getChildren()) {
                         Details details = detailsSnapshot.getValue(Details.class);
 
-                        if (details.getOrderID().equals(order)) {
+                        if (details.getOrderID().equals(order) || details.getOrderID().equals(ord) ) {
                             String str = details.getName();
                             String value = details.getWidth();
                             String siz = details.getAmount();
