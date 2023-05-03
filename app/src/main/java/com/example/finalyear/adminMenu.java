@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 public class adminMenu extends AppCompatActivity {
     EditText id,email;
-    Button srch,hme,ema;
+    Button srch,hme,ema,det;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class adminMenu extends AppCompatActivity {
         srch = findViewById(R.id.Search);
         hme = findViewById(R.id.Home);
         ema = findViewById(R.id.Emails);
+        det = findViewById(R.id.UsD);
 
         srch.setOnClickListener(new View.OnClickListener() {
 
@@ -54,6 +55,19 @@ public class adminMenu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(adminMenu.this, Email.class));
+
+            }
+
+        });
+
+        det.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                String emails = email.getText().toString().trim();
+                Intent in = new Intent(getApplicationContext(), DisplayUser.class);
+                in.putExtra("Email",emails);
+                startActivity(in);
 
             }
 

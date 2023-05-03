@@ -96,7 +96,7 @@ public class AdminDisplay extends AppCompatActivity {
                                         sen.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                detailsSnapshot.getRef().child("delivery").setValue("Sent on Delievery");
+                                                detailsSnapshot.getRef().child("delivery").setValue("Sent");
                                             }        });
                                         dele.setOnClickListener(new View.OnClickListener() {
                                             @Override

@@ -64,6 +64,18 @@
         android:layout_centerHorizontal="true"
         android:text="Email" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/UsD"
+        android:layout_width="250dp"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:layout_below="@+id/Emails"
+        android:layout_marginTop="40dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="User Details" />
+
 
 
 
